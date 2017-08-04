@@ -8,18 +8,27 @@ use yii;
 
 class Enter extends \yii\base\Widget
 {
+    public $currency = '';
+    public $ok_button = '<i class="glyphicon glyphicon-ok"></i>';
+    public $del_button = '<i class="glyphicon glyphicon-remove"></i>';
+    public $view = 'enter_form';
 
     public function init()
     {
         parent::init();
-
         \dvizh\promocode\assets\WidgetAsset::register($this->getView());
+        $this->currency = empty($this->currency) ? Yii::$app->getModule('promocode')->currency : $this->currency;
     }
 
     public function run()
     {
         $model = new PromoCodeUse;
-        
-        return $this->render('enter_form', ['model' => $model]);
+
+        return $this->render($this->view, [
+            'model'    => $model,
+            'currency' => $this->currency,
+            'ok'       => $this->ok_button,
+            'del'      => $this->del_button,
+        ]);
     }
 }

@@ -7,7 +7,7 @@ dvizh.promocode = {
         $(document).on('click', '.promo-code-enter-btn', this.enter);
         $(document).on('change', '.promo-code-enter input', this.enter);
         $(document).on('click', '.promo-code-clear-btn', this.clear);
-        
+
         return true;
     },
 
@@ -15,17 +15,20 @@ dvizh.promocode = {
         var form = $(this).parents('form');
         var data = $(form).serialize();
         data = data+'&clear=1';
-        
+
         jQuery.post($(form).attr('action'), data,
             function(json) {
                 if(json.result == 'success') {
                     $(form).find('input[type=text]').css({'border': '1px solid #ccc'}).val('');
                     $(form).find('.promo-code-discount').show('slow').html(json.message);
-                    
+
                     setTimeout(function() { $('.promo-code-discount').hide('slow'); }, 2300);
-                    
+
                     if(json.informer) {
                         $('.dvizh-cart-informer').replaceWith(json.informer);
+                    }
+                    if(json.total) {
+                        $('.dvizh-cart-total-row').html(json.total);
                     }
                 }
                 else {
@@ -33,10 +36,12 @@ dvizh.promocode = {
                     console.log(json.errors);
                 }
 
+                $(document).trigger("promocodeClear", json.code);
+
                 return true;
 
             }, "json");
-            
+
         return false;
     },
     enter: function() {
@@ -51,20 +56,23 @@ dvizh.promocode = {
                     if(json.informer) {
                         $('.dvizh-cart-informer').replaceWith(json.informer);
                     }
+                    if(json.total) {
+                        $('.dvizh-cart-total-row').html(json.total);
+                    }
                 }
                 else {
                     $(form).find('input[type=text]').css({'border': '1px solid red'});
                     console.log(json.errors);
                 }
-				
+
 				$(document).trigger("promocodeEnter", json.code);
-				
+
                 $(form).find('.promo-code-discount').show().html(json.message);
 
                 return true;
 
             }, "json");
-            
+
         return false;
     }
 };
