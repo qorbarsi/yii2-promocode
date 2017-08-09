@@ -6,7 +6,7 @@ use Yii;
 
 class PromoCode extends \yii\db\ActiveRecord
 {
-    
+
     public static function tableName()
     {
         return '{{%promocode}}';
@@ -28,18 +28,18 @@ class PromoCode extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
-            'title' => 'Название кода(акции)',
-            'description' => 'Описание',
-            'code' => 'Код',
-            'type' => 'Тип скидки промокода',
-            'discount' => 'Значение скидки',
-            'status' => 'Статус',
-            'date_elapsed' => 'Срок истечения',
-            'amount' => 'Количество использований',
+            'id' => Yii::t('promocode','ID'),
+            'title' => Yii::t('promocode','Название кода(акции)'),
+            'description' => Yii::t('promocode','Описание'),
+            'code' => Yii::t('promocode','Код'),
+            'type' => Yii::t('promocode','Тип скидки промокода'),
+            'discount' => Yii::t('promocode','Значение скидки'),
+            'status' => Yii::t('promocode','Статус'),
+            'date_elapsed' => Yii::t('promocode','Срок истечения'),
+            'amount' => Yii::t('promocode','Количество использований'),
         ];
     }
-    
+
     public function getTargetModels()
     {
         return $this->hasMany(PromocodeToItem::className(), ['promocode_id' => 'id']);

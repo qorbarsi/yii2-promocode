@@ -22,10 +22,10 @@ class PromoCodeCondition extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
-            'sum_start' => 'Начальная сумма',
-            'sum_stop' => 'Конечная сумма',
-            'value' => '% скидки',
+            'id' => Yii::t('promocode','ID'),
+            'sum_start' => Yii::t('promocode','Начальная сумма'),
+            'sum_stop' => Yii::t('promocode','Конечная сумма'),
+            'value' => Yii::t('promocode','% скидки'),
         ];
     }
 }

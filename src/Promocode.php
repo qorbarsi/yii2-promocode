@@ -45,15 +45,15 @@ class Promocode extends Component
 
 
         if (!$promocodeModel = $promocode::findOne(['code' => $promocodeId])) {
-            throw new \Exception('Промокод не найден');
+            throw new \Exception(Yii::t('promocode','Промокод не найден'));
         }
 
         if ($promocode::findOne(['code' => $promocodeId])->status == 0) {
-            throw new \Exception('Промокод не действителен');
+            throw new \Exception(Yii::t('promocode','Промокод не действителен'));
         }
 
         if (!$this->checkPromoCodeStatus($promocodeId)) {
-            throw new \Exception('Промокод не действителен');
+            throw new \Exception(Yii::t('promocode','Промокод не действителен'));
         }
 
         $data = [];

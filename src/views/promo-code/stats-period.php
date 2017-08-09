@@ -2,15 +2,15 @@
 
 use nex\datepicker\DatePicker;
 
-$this->title = 'Статистика по промокодам за период';
-$this->params['breadcrumbs'][] = ['label' => 'Промокоды', 'url' => ['index']];
-$this->params['breadcrumbs'][] = 'Статистика по промокодам за период';
+$this->title = Yii::t('promocode','Статистика по промокодам за период');
+$this->params['breadcrumbs'][] = ['label' => Yii::t('promocode','Промокоды'), 'url' => ['index']];
+$this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="promo-codes-stats">
     <div class="row session-finder">
         <div class="col-md-6">
             <form class="form form-inline" action="" method="get">
-                <p>Выберите период:</p>
+                <p><?= Yii::t('promocode','Выберите период:') ?></p>
                 <div class="row">
                     <div class="col-md-4 form-group">
                         <?= DatePicker::widget([
@@ -18,7 +18,7 @@ $this->params['breadcrumbs'][] = 'Статистика по промокодам
                             'addon' => false,
                             'value' => date('d.m.Y', strtotime($dateStart)),
                             'size' => 'sm',
-                            'language' => 'ru',
+                            //'language' => 'ru',
                             'options' => [
                                 'onchange' => '',
 

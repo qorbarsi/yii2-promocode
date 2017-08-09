@@ -54,25 +54,25 @@ Asset::register($this);
                     </div>
                     <div class="col-md-6">
                         <?= $form->field($model, 'status')->dropDownList([
-                            '1' => 'Активен',
-                            '0' => 'Отключен',
+                            '1' => Yii::t('promocode','Активно'),
+                            '0' => Yii::t('promocode','Неактивно'),
                         ]);
                         ?>
                     </div>
                     <div class="col-md-6">
                         <?= $form->field($model, 'type')->dropDownList([
-                            'percent' => 'Процент скидки',
-                            'quantum' => 'Сумма скидки',
-                            'cumulative' => 'Накопительная скидка'
+                            'percent' => Yii::t('promocode','Процент скидки'),
+                            'quantum' => Yii::t('promocode','Сумма скидки'),
+                            'cumulative' => Yii::t('promocode','Накопительная скидка')
                         ],
                             [
-                                'prompt' => 'Выберите тип скидки промокода:',
+                                'prompt' => Yii::t('promocode','Выберите тип скидки промокода:'),
                                 'class' => 'form-control promo-code-discount-type',
-                            ])->hint('Выберите тип предоставляемой промокодом скидки')->label('Тип скидки промокода')
+                            ])->hint(Yii::t('promocode','Выберите тип предоставляемой промокодом скидки'))->label(Yii::t('promocode','Тип скидки промокода'))
                         ?>
                     </div>
                     <div class="col-md-6">
-                        <?= $form->field($model, 'discount')->textInput()->hint('Задайте процент или сумму') ?>
+                        <?= $form->field($model, 'discount')->textInput()->hint(Yii::t('promocode','Задайте процент или сумму')) ?>
                     </div>
                 </div>
                 <div class="col-md-12 promocode-cumulative-form form-group <?= (empty($conditions) || ($model->type != 'cumulative')) ? 'hidden' : '' ?>">
@@ -88,8 +88,8 @@ Asset::register($this);
                             <?php if (isset($conditions)) { ?>
                                 <?php foreach ($conditions as $condition) { ?>
                                     <div class="cumulative-row form-group">
-                                        <input class="form-control" name="Conditions[<?= $condition['id']?>][sumStart]" type="text" value="<?= $condition['sum_start'] ?>" placeholder="От"> -
-                                        <input class="form-control" name="Conditions[<?= $condition['id']?>][sumStop]" type="text" value="<?= $condition['sum_stop'] ?>" placeholder="До">
+                                        <input class="form-control" name="Conditions[<?= $condition['id']?>][sumStart]" type="text" value="<?= $condition['sum_start'] ?>" placeholder="<?= Yii::t('promocode','От')?>" > -
+                                        <input class="form-control" name="Conditions[<?= $condition['id']?>][sumStop]" type="text" value="<?= $condition['sum_stop'] ?>" placeholder="<?= Yii::t('promocode','До')?>">
                                         <input class="form-control" name="Conditions[<?= $condition['id']?>][percent]" type="text" style="width: 50px" value="<?= $condition['value'] ?>" placeholder="%">
                                         <span class="btn glyphicon glyphicon-remove remove-condition-btn" style="color: red;"
                                               data-role="remove-row"
@@ -100,8 +100,8 @@ Asset::register($this);
                                 <?php }
                             } else { ?>
                                 <div class="cumulative-row form-group">
-                                    <input class="form-control" name="Conditions[C0][sumStart]" type="text"placeholder="От"> -
-                                    <input class="form-control" name="Conditions[C0][sumStop]" type="text"placeholder="До">
+                                    <input class="form-control" name="Conditions[C0][sumStart]" type="text"placeholder="<?= Yii::t('promocode','От')?>"> -
+                                    <input class="form-control" name="Conditions[C0][sumStop]" type="text"placeholder="<?= Yii::t('promocode','До')?>">
                                     <input class="form-control" name="Conditions[C0][percent]" type="text" style="width: 50px"placeholder="%">
                                         <span class="btn glyphicon glyphicon-remove remove-condition-btn" style="color: red;"
                                               data-role="remove-row">
@@ -120,10 +120,10 @@ Asset::register($this);
                 <div class="row">
                     <div class="col-md-6">
                         <?= $form->field($model, 'date_elapsed')->widget(DatePicker::classname(), [
-                            'language' => 'ru',
+                            //'language' => 'ru',
                             'type' => DatePicker::TYPE_COMPONENT_PREPEND,
                             'options' => [
-                                'placeholder' => 'Дата истечения промокода',
+                                'placeholder' => Yii::t('promocode','Дата истечения промокода'),
                                 'value' => $date,
                             ],
                             'removeButton' => false,
@@ -131,21 +131,21 @@ Asset::register($this);
                                 'autoclose' => true,
                                 'format' => 'd.m.yyyy',
                             ],
-                        ])->label('Дата истечения промокода')->hint('Выберите дату истечения срока действия промокода')
+                        ])->label(Yii::t('promocode','Дата истечения промокода'))->hint(Yii::t('promocode','Выберите дату истечения срока действия промокода'))
                         ?>
                     </div>
                     <div class="col-md-6">
-                        <?= $form->field($model, 'amount')->textInput()->label('Количество использований')->hint('Здесь задается количество использований промокода')
+                        <?= $form->field($model, 'amount')->textInput()->label(Yii::t('promocode','Количество использований'))->hint(Yii::t('promocode','Здесь задается количество использований промокода'))
                         ?>
                     </div>
                 </div>
                 <div class="form-group">
-                    <?= Html::submitButton('Сохранить', ['class' => 'btn btn-success', 'data-role' => 'sendForm']) ?>
+                    <?= Html::submitButton(Yii::t('promocode','Сохранить'), ['class' => 'btn btn-success', 'data-role' => 'sendForm']) ?>
                 </div>
             </div>
                 <div class="col-md-6 promocode-right-column">
                     <?php if($targetModelList) { ?>
-                    <h3>Прикрепить только к:</h3>
+                    <h3><?= Yii::t('promocode','Прикрепить только к:') ?></h3>
                     <div class="row">
                         <div class="col-md-4">
                             <?php foreach($targetModelList as $modelName => $modelType){   ?>
@@ -179,7 +179,7 @@ Asset::register($this);
                                         ?>
                                         <tr data-role="item">
                                             <td><label>
-                                                    <?=$item_attr['name']?>   
+                                                    <?=$item_attr['name']?>
                                                 </label>
                                                 <input type="hidden" data-role="product-model" name="targetModels<?=$item_id?>"
                                                        data-name="<?= str_replace(['[',']','\\'],"",$item_id)?>"/>
@@ -202,15 +202,15 @@ Asset::register($this);
                     <?php } ?>
                     <div>
                         <?php if ($model->getTransactions()->all()) { ?>
-                            <h3>История использований</h3>
+                            <h3><?= Yii::t('promocode','История использований') ?></h3>
                                 <div class="table-responsive">
                                     <table class="table table-bordered table-hover">
                                         <thead>
                                         <tr>
-                                            <th>Дата использования</th>
-                                            <th>Номер заказа</th>
-                                            <th>Сумма</th>
-                                            <th>Кем использован</th>
+                                            <th><?= Yii::t('promocode','Дата использования') ?></th>
+                                            <th><?= Yii::t('promocode','Номер заказа') ?></th>
+                                            <th><?= Yii::t('promocode','Сумма') ?></th>
+                                            <th><?= Yii::t('promocode','Кем использован') ?></th>
                                         </tr>
                                         </thead>
                                         <tbody>

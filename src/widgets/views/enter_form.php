@@ -17,10 +17,10 @@ use yii\widgets\ActiveForm;
                 <?= Yii::t('promocode', 'Ваша скидка: '); ?>
                 <?php
                     if (yii::$app->promocode->get()->promocode->type === 'cumulative' && yii::$app->promocode->get()->promocode->getTransactions()->all()) {
-                    echo 0;
-                } else {
-                    echo yii::$app->promocode->get()->promocode->discount;
-                }
+                        echo 0;
+                    } else {
+                        echo yii::$app->promocode->get()->promocode->discount;
+                    }
                 ?>
                 <?php if (yii::$app->promocode->get()->promocode->type != 'quantum') {
                     echo '%';

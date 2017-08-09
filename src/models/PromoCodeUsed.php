@@ -24,12 +24,12 @@ class PromoCodeUsed extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
-            'promocode_id' => 'ID Промокода',
-            'order_id' => 'ID Заказа',
-            'date' => 'Дата использования',
-            'user' => 'Использовано пользователем',
-            'sum' => 'Сумма использования',
+            'id' => Yii::t('promocode','ID'),
+            'promocode_id' => Yii::t('promocode','ID Промокода'),
+            'order_id' => Yii::t('promocode','ID Заказа'),
+            'date' => Yii::t('promocode','Дата использования'),
+            'user' => Yii::t('promocode','Использовано пользователем'),
+            'sum' => Yii::t('promocode','Сумма использования'),
         ];
     }
 }

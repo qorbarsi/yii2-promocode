@@ -21,11 +21,11 @@ class PromoCodeUse extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
-            'user_id' => 'Идентификатор пользователя',
-            'promocode_id' => 'Промокод',
-            'user_id' => 'Пользователь',
-            'date' => 'Дата использования',
+            'id' => Yii::t('promocode','ID'),
+            'user_id' => Yii::t('promocode','Идентификатор пользователя'),
+            'promocode_id' => Yii::t('promocode','Промокод'),
+            'user_id' => Yii::t('promocode','Пользователь'),
+            'date' => Yii::t('promocode','Дата использования'),
         ];
     }
 

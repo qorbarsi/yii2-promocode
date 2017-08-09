@@ -41,5 +41,5 @@ return [
     'sourceMessageTable' => '{{%source_message}}',
     'messageTable' => '{{%message}}',
     'catalog' => 'messages',
-    'ignoreCategories' => [],
+    'ignoreCategories' => ['cart'],
 ];

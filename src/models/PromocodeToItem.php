@@ -7,7 +7,7 @@ use Yii;
 
 class PromocodeToItem extends \yii\db\ActiveRecord
 {
-    
+
     public static function tableName()
     {
         return 'promocode_to_item';
@@ -21,14 +21,14 @@ class PromocodeToItem extends \yii\db\ActiveRecord
             [['item_model'], 'string', 'max' => 255],
         ];
     }
-    
+
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
-            'promocode_id' => 'ID Помокода',
-            'item_model' => 'Модель',
-            'item_id' => 'ID Экземпляра модели',
+            'id' => Yii::t('promocode','ID'),
+            'promocode_id' => Yii::t('promocode','ID Помокода'),
+            'item_model' => Yii::t('promocode','Модель'),
+            'item_id' => Yii::t('promocode','ID Экземпляра модели'),
         ];
     }
-} 
+}

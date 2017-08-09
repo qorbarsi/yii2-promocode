@@ -23,9 +23,9 @@ class PromoCodeToCondition extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
-            'promocode_id' => 'ID Помокода',
-            'condition_id' => 'ID Экземпляра условия',
+            'id' => Yii::t('promocode','ID'),
+            'promocode_id' => Yii::t('promocode','ID Помокода'),
+            'condition_id' => Yii::t('promocode','ID Экземпляра условия'),
         ];
     }
 

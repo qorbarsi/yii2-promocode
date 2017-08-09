@@ -36,7 +36,7 @@ dvizh.promocode = {
                     console.log(json.errors);
                 }
 
-                $(document).trigger("promocodeClear", json.code);
+                $(document).trigger("promocodeClear", json);
 
                 return true;
 
@@ -65,7 +65,8 @@ dvizh.promocode = {
                     console.log(json.errors);
                 }
 
-				$(document).trigger("promocodeEnter", json.code);
+				//$(document).trigger("promocodeEnter", json.code);
+                $(document).trigger("promocodeEnter", json);
 
                 $(form).find('.promo-code-discount').show().html(json.message);
 
