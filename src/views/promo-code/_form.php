@@ -218,8 +218,8 @@ Asset::register($this);
                                             <tr>
                                                 <td><?= date('d.m.Y H:i:s',strtotime($promoCodeUse->date)) ?></td>
                                                 <td><a href="<?=Url::to(['/order/order/view', 'id' => $promoCodeUse->order_id]) ?>"><?= $promoCodeUse->order_id ?></a></td>
-                                                <td><i><b><?= $promoCodeUse->sum ?> р.</b></i></td>
-                                                <td><?= ($promoCodeUse->user) ? $clientsModelMap[$promoCodeUse->user] : '' ?></td>
+                                                <td><i><b><?= $promoCodeUse->sum ?> </b></i></td>
+                                                <td><?= (!empty($clientsModelMap) && $promoCodeUse->user) ? $clientsModelMap[$promoCodeUse->user] : '' ?></td>
                                             </tr>
                                         <?php } ?>
                                         </tbody>

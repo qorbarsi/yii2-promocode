@@ -9,9 +9,11 @@ class PromoCodeUse extends Behavior
     public function events()
     {
         return [
-            'create' => 'usePromoCode'
+            'create' => 'usePromoCode',
+            'delete' => 'rollbackPromoCode'
         ];
     }
+    
     public function usePromoCode($event)
     {
         if ($event->model->promocode){
@@ -21,6 +23,13 @@ class PromoCodeUse extends Behavior
                 yii::$app->promocode->checkPromoCodeCumulativeStatus($promocode->id);
             }
         }
+    }
 
+    public function rollbackPromoCode($event)
+    {
+        if ($event->model->promocode){
+            $promocode = yii::$app->promocode->checkExists($event->model->promocode);
+            yii::$app->promocode->rollbackPromoCodeUse($event->model->id);
+        }
     }
 }

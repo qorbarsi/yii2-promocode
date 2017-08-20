@@ -4,7 +4,7 @@ use yii\widgets\ActiveForm;
 
 ?>
 
-<div class="promo-code-enter">
+<div class="promo-code-enter <?= $cssClass ?>">
 
     <?php $form = ActiveForm::begin([
         'action' => ['/promocode/promo-code-use/enter'],

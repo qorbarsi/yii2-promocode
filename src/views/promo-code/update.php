@@ -16,7 +16,7 @@ $this->params['breadcrumbs'][] = Yii::t('promocode','Изменить промо
         'targetModelList' => $targetModelList,
         'items' => $items,
         'conditions' => $conditions,
-        //'usesModelMap' => $clientsModelMap,
+        'clientsModelMap' => $clientsModelMap,
     ]) ?>
 
 </div>

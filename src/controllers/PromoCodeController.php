@@ -203,7 +203,7 @@ class PromoCodeController extends Controller
                 'targetModelList' => $targetModelList,
                 'items' => $items,
                 'conditions' => $conditions,
-                'usesModelMap' => $clientsModelMap,
+                'clientsModelMap' => $clientsModelMap,
             ]);
         }
     }

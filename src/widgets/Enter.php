@@ -12,6 +12,7 @@ class Enter extends \yii\base\Widget
     public $ok_button = '<i class="glyphicon glyphicon-ok"></i>';
     public $del_button = '<i class="glyphicon glyphicon-remove"></i>';
     public $view = 'enter_form';
+    public $cssClass = '';
 
     public function init()
     {
@@ -29,6 +30,7 @@ class Enter extends \yii\base\Widget
             'currency' => $this->currency,
             'ok'       => $this->ok_button,
             'del'      => $this->del_button,
+            'cssClass' => $this->cssClass,
         ]);
     }
 }

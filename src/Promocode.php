@@ -195,6 +195,21 @@ class Promocode extends Component
         return $promoCode->save();
     }
 
+    public function rollbackPromoCodeAmount($promoCode)
+    {
+        if ($promoCode->amount == null) {
+            return true;
+        }
+
+        if ($promoCode->amount > 0) {
+            $promoCode->amount = $promoCode->amount + 1;
+        } else {
+            $promoCode->amount = 1;
+        }
+
+        return $promoCode->save();
+    }
+
     public function setPromoCodeUse($promoCode, $orderId, $sum)
     {
         $model = new PromoCodeUsed();
@@ -346,6 +361,7 @@ class Promocode extends Component
 
         if ($promoCode) {
             $this->clearPromoCodeUseHistory($orderId);
+            $this->rollbackPromoCodeAmount($promoCode);
             if ($promoCode->type != 'cumulative') {
                 return true;
             } else {
@@ -354,4 +370,5 @@ class Promocode extends Component
             }
         }
     }
+
 }
